@@ -1,0 +1,72 @@
+.parallax-container {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1/1;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-ink-light);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  cursor: crosshair;
+  background: var(--color-parchment);
+}
+
+.parallax-layer {
+  position: absolute;
+  top: -5%; /* Add slop for bg layer movement */
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  pointer-events: none;
+}
+
+.diagram-lines-layer {
+  z-index: 10;
+}
+
+.final-labels-layer {
+  z-index: 20;
+}
+
+.diagram-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.p-label {
+  position: absolute;
+  font-family: var(--font-serif);
+  color: var(--color-ink);
+  font-size: 0.9rem;
+  background: rgba(244, 239, 223, 0.85); /* Parchment color slightly transparent */
+  padding: 0.5rem;
+  border: 1px solid rgba(26,26,26, 0.3);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.2;
+}
+
+.p-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  position: relative;
+}
+
+.p-dot::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  border-bottom: 1px solid var(--color-ink);
+  top: 3px;
+  left: -35px; /* Draw line from dot pointing to center */
+}
+
+.p-label[style*="right"] .p-dot::after {
+  left: auto;
+  right: -35px;
+}
